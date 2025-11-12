@@ -4,7 +4,6 @@ const path = require('path');
 
 const app = express();
 app.use(cors({ origin: 'https://trello.com' }));
-app.use(cors({ origin: 'https://trello-powerup-test-git-main-naximus-projects.vercel.app' }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
