@@ -1,17 +1,18 @@
-var cors = require('cors');
-const express = require('express')
-const app = express()
-const port = 3000
-
+const cors = require('cors');
 app.use(cors({ origin: 'https://trello.com' }));
 
-app.use(express.static('public'));
+const express = require('express');
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.sendFile('public/index.html');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(port, () => {
-  console.info(`Node Version: ${process.version}`);
-  console.log(`Trello Power-Up Server listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
